@@ -92,7 +92,6 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "zig-src": "zig-src",
         "zls": "zls"
       }
     },
@@ -147,23 +146,6 @@
         "owner": "mitchellh",
         "repo": "zig-overlay",
         "type": "github"
-      }
-    },
-    "zig-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732924221,
-        "narHash": "sha256-f+PDKuwj87myZ52z4aMtqu0I6tJ0zZqugs9cGCYu5Z8=",
-        "ref": "master",
-        "rev": "aa7d138462602e086aacf738e4b92bfa3372bebe",
-        "revCount": 31841,
-        "type": "git",
-        "url": "https://github.com/ziglang/zig"
-      },
-      "original": {
-        "ref": "master",
-        "type": "git",
-        "url": "https://github.com/ziglang/zig"
       }
     },
     "zls": {

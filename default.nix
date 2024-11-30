@@ -1,16 +1,19 @@
-{
-  pkgs,
-  zig-src,
-}:
+{ pkgs ? import <nixpkgs> {} }:
 let
   stdenv = pkgs.fastStdenv;
   lib = pkgs.lib;
   coreutils = pkgs.coreutils;
+  fetchFromGitHub = pkgs.fetchFromGitHub;
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "zig-dev";
   version = "0.14.0";
-  src = zig-src;
+  src = fetchFromGitHub {
+    owner = "ziglang";
+    repo = "zig";
+    rev = "aa7d138462602e086aacf738e4b92bfa3372bebe";
+    sha256 = "sha256-f+PDKuwj87myZ52z4aMtqu0I6tJ0zZqugs9cGCYu5Z8=";
+  };
 
   nativeBuildInputs = with pkgs; [
     cmake
@@ -81,11 +84,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description = "Zig ${finalAttrs.version} master branch";
-    #  changelog = "https://ziglang.org/download/${finalAttrs.version}/release-notes.html";
     homepage = "https://github.com/ziglang/zig";
     license = lib.licenses.mit;
     mainProgram = "zig";
     platforms = lib.platforms.unix;
   };
-
 })
