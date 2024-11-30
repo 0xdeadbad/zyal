@@ -16,6 +16,7 @@ pub const Lexer = struct {
     };
 
     pub const State = enum {
+        eof,
         start,
 
         simple_string,
@@ -46,8 +47,24 @@ pub const Lexer = struct {
     }
 
     pub fn next(self: *Lexer) void {
-        switch (self.state) {
-            .start => self.state.get_state_fn(self),
+        state_label: switch (self.state) {
+            .start => switch (self.source[self.current]) {
+                'a' => {
+                    std.debug.print("{s}\n", .{"a"});
+                    continue :state_label .float;
+                },
+                else => @panic("nope\n"),
+            },
+
+            .float => {
+                std.debug.print("{s}\n", .{"float"});
+                continue :state_label .eof;
+            },
+
+            .eof => {
+                std.debug.print("{s}\n", .{"eof"});
+                return;
+            },
             else => @panic("bruh\n"),
         }
     }
