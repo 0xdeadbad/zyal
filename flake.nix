@@ -1,5 +1,5 @@
 {
-  description = "YAL in Zig";
+  description = "YAL written in Zig";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
